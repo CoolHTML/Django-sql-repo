@@ -1,0 +1,17 @@
+{% extends 'test_app/base.html' %}
+{% load define_action %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+{{mainform}}
+  <button type="submit">Отправить</button>
+</form>
+
+{% if data %}
+{% for i in data %}
+<h6>{{i.pk}}</h6>
+{% endfor %}
+{% else %}
+<h1>Записей с такими критериями не найдено.</h1>
+{% endif %}
+{% endblock %}
